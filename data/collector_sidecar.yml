@@ -1,17 +1,16 @@
 server_url: ${GS_SERVER_URL}
 update_interval: ${GS_UPDATE_INTERVAL}
 tls_skip_verify: false
-send_status: true
+send_status: ${GS_SEND_STATUS}
 list_log_files: ${GS_LIST_LOG_FILES}
 node_id: ${GS_NODE_ID}
-collector_id: file:/etc/graylog/collector-sidecar/collector-id
+collector_id: ${GS_COLLECTOR_ID}
 log_path: /var/log/graylog/collector-sidecar
-log_rotation_time: 86400
-log_max_age: 604800
+log_rotation_time: ${GS_LOG_ROTATION_TIME}
+log_max_age: ${GS_LOG_MAX_AGE}
 tags: ${GS_TAGS}
 backends:
     - name: filebeat
       enabled: true
       binary_path: /usr/bin/filebeat
       configuration_path: /etc/graylog/collector-sidecar/generated/filebeat.yml
-

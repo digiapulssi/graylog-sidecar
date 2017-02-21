@@ -1,8 +1,25 @@
 #########################
 # graylog sidecar       #
 #########################
-FROM ubuntu:latest
-MAINTAINER Teemu Hautala <teemu.hautala@digia.com>
+FROM debian:jessie-slim
+
+LABEL maintainer "Sami Pajunen <sami.pajunen@digia.com>"
+
+# Update and install some required dependencies
+RUN apt-get update && apt-get install -y openssl libapr1 libdbi1 libexpat1 ca-certificates curl
+
+# Install Graylog Sidecar (Filebeat included)
+ENV SIDECAR_BINARY_URL https://github.com/Graylog2/collector-sidecar/releases/download/0.1.0-rc.1/collector-sidecar_0.1.0-1.rc.1_amd64.deb
+RUN curl -Lo collector.deb ${SIDECAR_BINARY_URL} && dpkg -i collector.deb && rm collector.deb
+
+# Define default environment values
+ENV GS_UPDATE_INTERVAL=60 \
+    GS_SEND_STATUS="true" \
+    GS_LIST_LOG_FILES="[]" \
+    GS_COLLECTOR_ID="file:/etc/graylog/collector-sidecar/collector-id" \
+    GS_LOG_ROTATION_TIME=86400 \
+    GS_LOG_MAX_AGE=604800
+
 ADD ./data /data
-RUN apt-get update && apt-get install -y openssl libapr1 libdbi1 libexpat1 && dpkg -i /data/collector-sidecar_0.1.0-1_amd64.deb
+
 CMD /data/start.sh
