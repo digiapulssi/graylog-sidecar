@@ -39,7 +39,7 @@ Also, the monitored folder needs to be mounted for the docker container. E.g. if
 Example env.list configuration:
 ```
 GS_SERVER_URL=http://graylog2:9000/api/
-GS_NODE_ID=graylog-collector-sidecar-docker
+GS_NODE_ID=apache-server
 GS_TAGS=['apache2']
 ```
 
