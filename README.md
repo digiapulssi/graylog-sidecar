@@ -21,6 +21,8 @@ The container uses environment variables to define the logfiles that are monitor
  - seconds interval on how often the configuration is retrieved from Graylog server, default is 60
 - GS_SEND_STATUS
  - enable sending collector status to server, default is true
+- GS_TLS_SKIP_VERIFY
+ - Ignore errors when the REST API was started with a self-signed certificate, default is false
 - GS_LIST_LOG_FILES
  - list of container paths that contain the log files monitored, listings of these paths are periodically published to server, default is empty
  - Example: GS_LIST_LOG_FILES=['/var/log/apache2','/var/log/mariadb']

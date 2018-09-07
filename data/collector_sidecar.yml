@@ -1,6 +1,6 @@
 server_url: ${GS_SERVER_URL}
 update_interval: ${GS_UPDATE_INTERVAL}
-tls_skip_verify: false
+tls_skip_verify: ${GS_TLS_SKIP_VERIFY}
 send_status: ${GS_SEND_STATUS}
 list_log_files: ${GS_LIST_LOG_FILES}
 node_id: ${GS_NODE_ID}

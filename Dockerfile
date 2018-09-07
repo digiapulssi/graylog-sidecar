@@ -15,6 +15,7 @@ RUN apt-get install -y --no-install-recommends curl && curl -Lo collector.deb ${
 # Define default environment values
 ENV GS_UPDATE_INTERVAL=60 \
     GS_SEND_STATUS="true" \
+    GS_TLS_SKIP_VERIFY="false" \
     GS_LIST_LOG_FILES="[]" \
     GS_COLLECTOR_ID="file:/etc/graylog/collector-sidecar/collector-id" \
     GS_LOG_ROTATION_TIME=86400 \
